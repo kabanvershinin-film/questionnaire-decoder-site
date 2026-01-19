@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Расшифровка опросника</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <h1>Расшифровка по отметкам в опроснике</h1>
+
+    <div class="card">
+      <label class="label">Загрузи заполненный опросник (.docx)</label>
+      <input id="file" type="file" accept=".docx" />
+      <button id="go">Расшифровать</button>
+      <p class="hint" id="hint"></p>
+    </div>
+
+    <div class="card">
+      <h2>Результат</h2>
+      <pre id="out">Здесь появится расшифровка…</pre>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
