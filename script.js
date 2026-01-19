@@ -17,7 +17,8 @@ goBtn.onclick = async () => {
   fd.append("file", f);
 
   try {
-    const res = await fetch(`${API_BASE}/decode`, {
+    // 👇 ВАЖНО: слэш в конце /decode/
+    const res = await fetch(`${API_BASE}/decode/`, {
       method: "POST",
       body: fd
     });
