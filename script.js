@@ -1,6 +1,5 @@
-// сюда вставишь URL твоего Render-сервиса, например:
-// https://questionnaire-decoder-api.onrender.com
-const API_BASE = "PASTE_RENDER_URL_HERE";
+// URL твоего Render-сервиса
+const API_BASE = "https://questionnaire-decoder-api.onrender.com";
 
 const fileEl = document.getElementById("file");
 const outEl = document.getElementById("out");
@@ -18,11 +17,16 @@ goBtn.onclick = async () => {
   fd.append("file", f);
 
   try {
-    const res = await fetch(`${API_BASE}/decode`, { method: "POST", body: fd });
+    const res = await fetch(`${API_BASE}/decode`, {
+      method: "POST",
+      body: fd
+    });
+
     if (!res.ok) {
       const txt = await res.text();
       throw new Error(`API error ${res.status}: ${txt}`);
     }
+
     const data = await res.json();
 
     hintEl.textContent =
