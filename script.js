@@ -33,9 +33,18 @@ goBtn.onclick = async () => {
     hintEl.textContent =
       `Найдено: ${data.matched?.length ?? 0} | Не сопоставилось: ${data.missed?.length ?? 0}`;
 
-    // ===== ВОТ ГЛАВНОЕ ИЗМЕНЕНИЕ =====
-    let out = "";
+    // ✅ ЖЕЛЕЗНО ПОКАЗЫВАЕМ, ЧТО НЕ НАШЛОСЬ
+    console.log("MISSED:", data.missed);
+    console.log("EXTRACTED:", data.extracted);
 
+    if (data.missed?.length) {
+      alert("❌ НЕ СОПОСТАВИЛОСЬ (нет в базе):\n\n" + data.missed.join("\n"));
+    } else {
+      alert("✅ Всё сопоставилось! (missed = 0)");
+    }
+
+    // ===== ВЫВОД НА СТРАНИЦУ (как раньше) =====
+    let out = "";
     out += data.report_markdown || "Пусто.";
 
     if (data.missed?.length) {
@@ -59,7 +68,7 @@ goBtn.onclick = async () => {
     }
 
     outEl.textContent = out;
-    // ===== КОНЕЦ ИЗМЕНЕНИЯ =====
+    // =========================================
 
   } catch (e) {
     outEl.textContent = "Ошибка: " + e.message;
